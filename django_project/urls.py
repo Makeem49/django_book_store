@@ -20,8 +20,9 @@ urlpatterns = [
     # Django Admin
     path("admin/", admin.site.urls),
     # User Management
-    path("accounts/", include("django.contrib.auth.urls")),
+    # path("accounts/", include("django.contrib.auth.urls")), # \Since django-allauth is now being use, we can disable the custom app
     # Local Apps
-    path("accounts/", include("accounts.urls")),
+    # path("accounts/", include("accounts.urls")), # \Since django-allauth is now being use, we can disable the custom app
+    path("accounts/", include("allauth.urls")),
     path("", include("pages.urls")),
 ]
