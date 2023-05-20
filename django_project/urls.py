@@ -25,4 +25,5 @@ urlpatterns = [
     # path("accounts/", include("accounts.urls")), # \Since django-allauth is now being use, we can disable the custom app
     path("accounts/", include("allauth.urls")),
     path("", include("pages.urls")),
+    path("books/", include("books.urls")),
 ]

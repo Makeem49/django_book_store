@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # local apps
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
+    "books.apps.BooksConfig",
 ]
 
 AUTH_USER_MODEL = "accounts.CustomUser"

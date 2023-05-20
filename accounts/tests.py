@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse, resolve
+from allauth.account.forms import SignupForm
 
 from .views import SignupPageView
 from .forms import CustomUserCreationForm
@@ -43,7 +44,10 @@ class SignUpPageTests(TestCase):  # new
 
     def test_signup_form(self):  # new
         form = self.response.context.get("form")
-        self.assertIsInstance(form, CustomUserCreationForm)
+        print(dir(self.response))
+        print(self.response.context)
+
+        self.assertIsInstance(form, SignupForm)
         self.assertContains(self.response, "csrfmiddlewaretoken")
 
     def test_signup_view(self):
