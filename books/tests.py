@@ -1,15 +1,27 @@
 from django.test import TestCase
 from django.urls import reverse
-from .models import Book
+from django.contrib.auth import get_user_model
+
+from .models import Book, Review
 
 
 class BookTests(TestCase):
     @classmethod
     def setUpTestData(cls):
+        cls.user = get_user_model().objects.create_user(  # new
+            username="reviewuser",
+            email="reviewuser@email.com",
+            password="testpass123",
+        )
         cls.book = Book.objects.create(
             title="Harry Potter",
             author="JK Rowling",
             price="25.00",
+        )
+        cls.review = Review.objects.create(  # new
+            book=cls.book,
+            author=cls.user,
+            review="An excellent review",
         )
 
     def test_book_listing(self):
